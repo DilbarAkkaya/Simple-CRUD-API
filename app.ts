@@ -1,1 +1,2 @@
-console.log('app is startполлing')
+import { users } from './src/users';
+console.log(users);
