@@ -1,4 +1,4 @@
 import { users } from './src/users';
-import { createUser } from './src/api/get';
+import { createUser } from './src/api/functions';
 
 console.log(users);
