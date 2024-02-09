@@ -1,0 +1,11 @@
+{
+  "name": "simple-crud-api",
+  "version": "1.0.0",
+  "description": "simple CRUD API using in-memory database",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
