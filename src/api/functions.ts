@@ -1,15 +1,15 @@
 import { users } from '../users';
 import { ServerResponse } from 'http';
-import { STATUS_CODE, CONTENT_TYPES, User } from '../types';
+import { CONTENT_TYPES, User } from '../types';
 
 
-export const getUsers = (res: ServerResponse) => {
-  res.writeHead(STATUS_CODE.OK, { 'Content-Type': CONTENT_TYPES.ApplicationJSON });
-  res.end(JSON.stringify(users));
+export const sendResponse = (res: ServerResponse, statusCode: number, data: User | User[] ) => {
+  res.writeHead(statusCode, { 'Content-Type': CONTENT_TYPES.ApplicationJSON });
+  res.end(JSON.stringify(data));
 }
 
-export const sendMessage = (res: ServerResponse, status: number, message: string) => {
-  res.writeHead(status, { 'Content-Type': CONTENT_TYPES.TextPlain });
+export const sendMessage = (res: ServerResponse, statusCode: number, message: string) => {
+  res.writeHead(statusCode, { 'Content-Type': CONTENT_TYPES.TextPlain });
   res.end(message);
 };
 
