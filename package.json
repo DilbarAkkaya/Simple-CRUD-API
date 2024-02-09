@@ -4,8 +4,8 @@
   "description": "simple CRUD API using in-memory database",
   "main": "index.ts",
   "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "node index.ts"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -15,8 +15,6 @@
     "eslint": "^8.56.0",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.3.3",
-    "webpack": "^5.90.1",
-    "webpack-cli": "^5.1.4"
+    "typescript": "^5.3.3"
   }
 }
