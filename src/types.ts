@@ -19,3 +19,8 @@ export enum STATUS_CODE {
   CREATED = 201,
   NO_CONTENT = 204
 };
+
+export enum CONTENT_TYPES {
+  TextPlain = 'text/plain',
+  ApplicationJSON = 'application/json',
+}
