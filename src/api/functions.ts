@@ -29,11 +29,22 @@ export const updateUser = (userID: string, updatedUser: User) => {
   if (indexUserForUpdating == -1) {
     return undefined;
   } else {
-    users[indexUserForUpdating] = {...users[indexUserForUpdating], ...updatedUser};
+    users[indexUserForUpdating] = { ...users[indexUserForUpdating], ...updatedUser };
     return users[indexUserForUpdating];
   }
 }
-export const validateID = (id:string) => {
+export const deleteUser = (userID: string) => {
+  const userForRemove = users.find(item => item.id === userID);
+  if (!userForRemove) {
+    return false;
+  } else {
+    const indexUserForRemove = users.indexOf(userForRemove);
+    users.splice(indexUserForRemove, 1);
+    return true;
+  }
+}
+
+export const validateID = (id: string) => {
   const regExp = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
   return regExp.test(id);
 }

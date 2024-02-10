@@ -1,6 +1,6 @@
 import http from 'http';
 import { STATUS_CODE, HTTP_METHOD, ENDPOINT, PORT } from '../types';
-import { createUser, sendResponse, sendMessage, validateID, updateUser } from './functions';
+import { createUser, sendResponse, sendMessage, validateID, updateUser, deleteUser } from './functions';
 import { users } from '../users';
 //import { v4 as uuidv4 } from 'uuid';
 
@@ -39,7 +39,7 @@ export const createServer = () => {
           const newUser = createUser(parsedUser);
           sendResponse(res, STATUS_CODE.CREATED, newUser);
         } catch (err) {
-          sendMessage(res, STATUS_CODE.BAD_REQUEST, 'Invalid User Data. Please contain all required fields"');
+          sendMessage(res, STATUS_CODE.BAD_REQUEST, 'Invalid User Data. Please contain all required fields');
         }
       })
     } else if (req.method === HTTP_METHOD.PUT && req.url && req.url.startsWith(`${ENDPOINT}/`)) {
@@ -66,12 +66,25 @@ export const createServer = () => {
               updateUser(updatedUser.id, updatedUser);
               sendResponse(res, STATUS_CODE.OK, updatedUser);
               } catch (err) {
-                sendMessage(res, STATUS_CODE.BAD_REQUEST, 'Invalid data');
+                sendMessage(res, STATUS_CODE.BAD_REQUEST, 'Invalid User Data. Please contain all required fields');
               }
             });
           } else {
             sendMessage(res, STATUS_CODE.NOT_FOUND, 'The requested resource was not found');
           }
+        }
+      }
+    } else if (req.method === HTTP_METHOD.DELETE && req.url && req.url.startsWith(`${ENDPOINT}/`)) {
+      const urlArray = req.url.split('/');
+      const userID = urlArray[1];
+      if (!userID) {
+        sendMessage(res, STATUS_CODE.NOT_FOUND, 'The requested resource was not found');
+      } else {
+        const isValidate = validateID(userID);
+        if (!isValidate) {
+          sendMessage(res, STATUS_CODE.BAD_REQUEST, 'Invalid userId. Please enter a valid uuidv4');
+        } else {
+          deleteUser(userID);
         }
       }
     }
