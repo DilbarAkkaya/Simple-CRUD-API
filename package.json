@@ -4,10 +4,13 @@
   "description": "simple CRUD API using in-memory database",
   "main": "app.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start:dev": "nodemon --exec ts-node-dev app.ts",
     "start:prod": "npm run build && node dist/app.js",
     "build": "tsc"
+  },
+  "jest": {
+    "verbose": true
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +19,7 @@
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "eslint": "^8.56.0",
+    "jest": "^29.7.0",
     "nodemon": "^3.0.3",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
