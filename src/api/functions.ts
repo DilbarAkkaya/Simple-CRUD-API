@@ -24,6 +24,15 @@ export const createUser = (userReq: User) => {
   users.push(newUser);
   return newUser;
 }
+export const updateUser = (userID: string, updatedUser: User) => {
+  const indexUserForUpdating = users.findIndex(item => item.id === userID);
+  if (indexUserForUpdating == -1) {
+    return undefined;
+  } else {
+    users[indexUserForUpdating] = {...users[indexUserForUpdating], ...updatedUser};
+    return users[indexUserForUpdating];
+  }
+}
 export const validateID = (id:string) => {
   const regExp = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
   return regExp.test(id);
