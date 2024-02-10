@@ -1,9 +1,12 @@
 import http from 'http';
-import { STATUS_CODE, HTTP_METHOD, ENDPOINT, PORT } from '../types';
+import { STATUS_CODE, HTTP_METHOD, ENDPOINT } from '../types';
 import { createUser, sendResponse, sendMessage, validateID, updateUser, deleteUser } from './functions';
 import { users } from '../users';
+//import { configDotenv } from 'dotenv';
 //import { v4 as uuidv4 } from 'uuid';
-
+import dotenv from 'dotenv';
+dotenv.config();
+const PORT = process.env.PORT;
 export const createServer = () => {
   const server = http.createServer((req, res) => {
 try {

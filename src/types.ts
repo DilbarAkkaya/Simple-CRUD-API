@@ -26,4 +26,3 @@ export enum CONTENT_TYPES {
   ApplicationJSON = 'application/json',
 }
 export const ENDPOINT = '/api/users';
-export const PORT = 3000;
