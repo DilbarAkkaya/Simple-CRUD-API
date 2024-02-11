@@ -1,5 +1,4 @@
-export default {
-  preset: 'ts-jest',
+module.exports = {
   testEnvironment: 'node',
   testPathIgnorePatterns: ['/node_modules/'],
   testMatch: ['**/?(*.)+(test).ts'],

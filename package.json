@@ -9,9 +9,6 @@
     "start:prod": "npm run build && node dist/app.js",
     "build": "tsc"
   },
-  "jest": {
-    "verbose": true
-  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
