@@ -14,15 +14,16 @@ export const sendMessage = (res: ServerResponse, statusCode: number, message: st
   res.end(message);
 };
 
-export const createUser = (userReq: User) => {
+export const createUser = (userReq: User, arr: User[]) => {
+  const id = uuidv4();
   const newUser: User = {
-    id: uuidv4(),
+    id: id,
     username: userReq.username,
     age: userReq.age,
     hobbies: userReq.hobbies,
   }
-  users.push(newUser);
-  return newUser;
+ arr.push(newUser);
+  return  newUser;
 }
 export const updateUser = (userID: string, updatedUser: User) => {
   const indexUserForUpdating = users.findIndex(item => item.id === userID);
