@@ -1,5 +1,3 @@
-//import { users } from './src/users';
-//import { createUser } from './src/api/functions';
 import { createServer } from './src/api/server';
 import cluster from 'cluster';
 import os from 'os';
@@ -8,6 +6,8 @@ const countCPUs = os.cpus().length;
 const port = process.env.PORT || 4000;
 const workers = cluster.workers;
 
+
+if (process.env.NODE_ENV === 'multi') {
 if (cluster.isPrimary) {
   for (let i = 1; i <= (countCPUs - 1); i++) {
     cluster.fork({ worker_port: Number(port) + 1 });
@@ -47,5 +47,10 @@ if (cluster.isPrimary) {
   server.listen(port, () => {
     console.log(`Server is running on port ${port}`);
   });
-
+}
+} else {
+  const server = createServer();
+  server.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
 }
