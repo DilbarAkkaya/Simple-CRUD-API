@@ -6,7 +6,7 @@ import { users } from '../users';
 //import { v4 as uuidv4 } from 'uuid';
 import dotenv from 'dotenv';
 dotenv.config();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 8000;
 export const createServer = () => {
   const server = http.createServer((req, res) => {
 try {

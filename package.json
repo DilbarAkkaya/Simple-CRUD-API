@@ -7,7 +7,7 @@
     "test": "jest",
     "start:dev": "nodemon --exec ts-node-dev app.ts",
     "start:prod": "npm run build && node dist/app.js",
-    "start:multi": "cross-env NODE_ENV=multi npm run build && node dist/app.js",
+    "start:multi": "npm run build && node dist/app.js -- --multi",
     "build": "tsc"
   },
   "author": "",
