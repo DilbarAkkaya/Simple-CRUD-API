@@ -1,18 +1,15 @@
 //import {jest} from '@jest/globals';
 import request from 'supertest';
-import { createServer } from './server';
+import { createServer } from '../api/server';
 import http from 'http';
 //import { User } from 'types';
 import { users } from 'users';
 //import { v4 as uuidv4 } from 'uuid';
-let server: http.Server;
+
 let id: string;
-
-describe('Implemented endpoint api/users GET', () => {
-
-  beforeEach(() => {
-    server = createServer();
-  });
+let server: http.Server;
+describe('api/users GET', () => {
+  server = createServer();
   afterEach(() => {
     server.close();
   });

@@ -15,6 +15,9 @@ export const sendMessage = (res: ServerResponse, statusCode: number, message: st
 };
 
 export const createUser = (userReq: User, arr: User[]) => {
+  if (!userReq.username || !userReq.age || !userReq.hobbies) {
+    throw new Error(' Please contain all required fields');
+  }
   const id = uuidv4();
   const newUser: User = {
     id: id,

@@ -48,14 +48,14 @@ try {
         sendResponse(res, STATUS_CODE.CREATED, newUser);
         console.log('users array:', users);
       } catch (err) {
-        sendMessage(res, STATUS_CODE.BAD_REQUEST, 'Invalid User Data. Please contain all required fields');
+        sendMessage(res, STATUS_CODE.BAD_REQUEST, 'Invalid User Data');
       }
     })
 
 
   } else if (req.method === HTTP_METHOD.PUT && req.url && req.url.startsWith(`${ENDPOINT}/`)) {
     const urlArray = req.url.split('/');
-    const userID = urlArray[1];
+    const userID = urlArray[urlArray.length-1];
     if (!userID) {
       sendMessage(res, STATUS_CODE.NOT_FOUND, 'The requested resource was not found');
     } else {
@@ -89,7 +89,7 @@ try {
 
   } else if (req.method === HTTP_METHOD.DELETE && req.url && req.url.startsWith(`${ENDPOINT}/`)) {
     const urlArray = req.url.split('/');
-    const userID = urlArray[1];
+    const userID = urlArray[urlArray.length-1];
     if (!userID) {
       sendMessage(res, STATUS_CODE.NOT_FOUND, 'The requested resource was not found');
     } else {
@@ -108,7 +108,7 @@ try {
   }
 } catch(err) {
   sendMessage(res, STATUS_CODE.INTERNAL_SERVER_ERROR, 'Internal server error');
-  console.error('Internal server error', err);
+  throw new Error('Internal server error');
 }
    
   });
