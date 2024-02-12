@@ -6,7 +6,7 @@ import { users } from '../users';
 //import { v4 as uuidv4 } from 'uuid';
 import dotenv from 'dotenv';
 dotenv.config();
-const PORT = process.env.PORT;
+const port = process.env.PORT || 3001
 export const createServer = () => {
   const server = http.createServer((req, res) => {
 try {
@@ -112,8 +112,13 @@ try {
 }
    
   });
-  server.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  server.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
   });
+  server.on('error', (err: NodeJS.ErrnoException) => {
+    console.error('Server starting error:', err.code);
+    if (err.code === 'EADDRINUSE') {
+        console.log(`Port ${port} is already using`);
+    }});
   return server;
 };
