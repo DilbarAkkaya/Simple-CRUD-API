@@ -94,7 +94,8 @@ try {
       if (!isValidate) {
         sendMessage(res, STATUS_CODE.BAD_REQUEST, 'Invalid userId. Please enter a valid uuidv4');
       } else {
-        deleteUser(userID, users);
+        const deletedUser = deleteUser(userID, users);
+        sendResponse(res, STATUS_CODE.OK, deletedUser);
       }
     }
   }
