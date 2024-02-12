@@ -5,7 +5,7 @@ import request from 'supertest';
 //import { User } from 'types';
 import { users } from 'users';
 //import { v4 as uuidv4 } from 'uuid';
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 4000;
 console.log(process.env)
 let id: string;
 // let server: http.Server;
