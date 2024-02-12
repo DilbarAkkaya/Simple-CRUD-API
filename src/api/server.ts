@@ -44,7 +44,6 @@ try {
         const parsedUser = JSON.parse(body);
         const newUser = createUser(parsedUser, users);
         sendResponse(res, STATUS_CODE.CREATED, newUser);
-        console.log('users array:', users);
       } catch (err) {
         sendMessage(res, STATUS_CODE.BAD_REQUEST, 'Invalid User Data');
       }

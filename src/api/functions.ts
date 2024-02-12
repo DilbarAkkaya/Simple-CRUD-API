@@ -42,8 +42,8 @@ export const deleteUser = (userID: string, arr: User[]) => {
   if (!userForRemove) {
     return false;
   } else {
-    const indexUserForRemove = users.indexOf(userForRemove);
-    users.splice(indexUserForRemove, 1);
+    const indexUserForRemove = arr.indexOf(userForRemove);
+    arr.splice(indexUserForRemove, 1);
     return true;
   }
 }
