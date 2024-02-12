@@ -14,7 +14,6 @@ try {
     sendResponse(res, STATUS_CODE.OK, users);
   } else if (req.method === HTTP_METHOD.GET && req.url && req.url.startsWith(`${ENDPOINT}/`)) {
     const urlArray = req.url.split('/');
-    console.log(urlArray)
     const userID = urlArray[urlArray.length-1];
     if (!userID || userID === '') {
       sendMessage(res, STATUS_CODE.NOT_FOUND, 'The requested resource was not found');
@@ -24,7 +23,6 @@ try {
         sendMessage(res, STATUS_CODE.BAD_REQUEST, 'Invalid userId. Please enter a valid uuidv4');
       } else {
         const user = users.find((item) => {
-          console.log('users array and user:', users, item);
           return item.id === userID;
         });
         if (user) {
@@ -74,7 +72,7 @@ try {
           req.on('end', () => {
             try {
             const updatedUser = JSON.parse(body);
-            updateUser(updatedUser.id, updatedUser);
+            updateUser(updatedUser.id, updatedUser, users);
             sendResponse(res, STATUS_CODE.OK, updatedUser);
             } catch (err) {
               sendMessage(res, STATUS_CODE.BAD_REQUEST, 'Invalid User Data. Please contain all required fields');
@@ -97,7 +95,7 @@ try {
       if (!isValidate) {
         sendMessage(res, STATUS_CODE.BAD_REQUEST, 'Invalid userId. Please enter a valid uuidv4');
       } else {
-        deleteUser(userID);
+        deleteUser(userID, users);
       }
     }
   }

@@ -28,8 +28,8 @@ export const createUser = (userReq: User, arr: User[]) => {
  arr.push(newUser);
   return  newUser;
 }
-export const updateUser = (userID: string, updatedUser: User) => {
-  const indexUserForUpdating = users.findIndex(item => item.id === userID);
+export const updateUser = (userID: string, updatedUser: User, arr: User[]) => {
+  const indexUserForUpdating = arr.findIndex(item => item.id === userID);
   if (indexUserForUpdating == -1) {
     return undefined;
   } else {
@@ -37,8 +37,8 @@ export const updateUser = (userID: string, updatedUser: User) => {
     return users[indexUserForUpdating];
   }
 }
-export const deleteUser = (userID: string) => {
-  const userForRemove = users.find(item => item.id === userID);
+export const deleteUser = (userID: string, arr: User[]) => {
+  const userForRemove = arr.find(item => item.id === userID);
   if (!userForRemove) {
     return false;
   } else {
