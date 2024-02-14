@@ -19,10 +19,10 @@ IMPORTANT! create .env file with variable PORT=3000 in the project root folder (
 
 ## Using
 The following endpoints are available:
- - `GET /api/users`: Get all users
- - `GET /api/users/{userId}`: Get a user by ID
- - `POST /api/users`: Create a new user
- - `PUT /api/users/{userId}`: Update a user
- - `DELETE /api/users/{userId}`: Delete a user
+ - `GET /api/users`: Get all users (first will shown empty array (database), after post new users, you can try again, you will see all created users)
+ - `GET /api/users/{userId}`: Get a user by ID (you will see in response a user with this id)
+ - `POST /api/users`: Create a new user (new user will be in response and will add to database, don't add field id, id will be created by uuid)
+ - `PUT /api/users/{userId}`: Update a user (when you send this request, you will see this user in response with updated fields, array will be with updated user) 
+ - `DELETE /api/users/{userId}`: Delete a user (when you send this request, you will see this user in response, but it will be deleted from array of users, you can check it with GET /api/users.
 
 for example, can use API platform POSTMAN, choose GET write  http://localhost:3000/api/users
