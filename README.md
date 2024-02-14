@@ -1,3 +1,5 @@
+IMPORTANT! create .env file with variable PORT=3000 in the project root folder (SIMPLE CRUD API at the same level with a file api.ts)
+
 # Simple-CRUD-API
 ## Installing
  - git clone https://github.com/DilbarAkkaya/Simple-CRUD-API.git or Download ZIP
