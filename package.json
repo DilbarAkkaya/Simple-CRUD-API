@@ -1,0 +1,31 @@
+{
+  "name": "simple-crud-api",
+  "version": "1.0.0",
+  "description": "simple CRUD API using in-memory database",
+  "main": "app.ts",
+  "scripts": {
+    "test": "jest",
+    "start:dev": "nodemon --exec ts-node-dev app.ts",
+    "start:prod": "npm run build && node dist/app.js",
+    "start:multi": "npm run build && node dist/app.js -- --multi",
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/uuid": "^9.0.8",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.3",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.1",
+    "uuid": "^9.0.1"
+  }
+}
